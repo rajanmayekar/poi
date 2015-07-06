@@ -13,7 +13,7 @@ angular.module('app', ['ionic', 'uiGmapgoogle-maps'])
     }
   });
 })
-.config(function(uiGmapGoogleMapApiProvider) {
+  .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
         v: '3.17',
