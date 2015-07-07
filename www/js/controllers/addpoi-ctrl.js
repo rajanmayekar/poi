@@ -1,9 +1,10 @@
 angular.module('app')
-  .controller('AddPoiCtrl', function ($scope, uiGmapGoogleMapApi) {
-    $scope.map = { center: { latitude: 20, longitude: 76 }, zoom: 8 };
+  .controller('AddPoiCtrl', function ($scope, uiGmapGoogleMapApi, $rootScope) {
 
     uiGmapGoogleMapApi.then(function(maps) {
-      var styleArray = [
+      $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
+      var styles = [
         {
           featureType: "all",
           stylers: [
@@ -25,6 +26,6 @@ angular.module('app')
         }
       ];
 
-      // Set stye @todo
+      $scope.map.options = {'styles' : styles};
     });
   });

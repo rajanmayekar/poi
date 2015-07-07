@@ -5,6 +5,8 @@
         <input type="text" placeholder="Select Location">
       </label>
     </div>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true"></ui-gmap-google-map>
+    <div ng-show="map">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true" options="map.options"></ui-gmap-google-map>
+  </div>
   </ion-content>
 </ion-view>
