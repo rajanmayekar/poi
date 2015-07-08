@@ -5,6 +5,14 @@
         <span class="input-label">Location</span>
         <input type="text" placeholder="Select Location" ng-model="currentLocation.name">
       </label>
+      <label class="item item-input">
+        <span class="input-label">Seach POI</span>
+        <input type="text" placeholder="Current Location">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Tag</span>
+        <input type="text" placeholder="Hotel">
+      </label>
     </div>
     <div ng-show="map.show">
     <ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true" options="map.options">
@@ -24,6 +32,12 @@
       </ui-gmap-marker>
       -->
     </ui-gmap-google-map>
+    <div class="poi-padding-updown-small">
+    <button class="button button-positive poi-padding-fullwidth">
+      ADD THIS AS A POI
+    </button>
+    <div>
+
   </div>
 
   </ion-content>

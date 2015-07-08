@@ -7694,7 +7694,7 @@ a.button {
   transition-duration: 0s; }
 
 .angular-google-map-container {
-  height: 400px; }
+  height: 320px; }
 
 .poi-marker-icon {
   display: block;
@@ -7702,3 +7702,9 @@ a.button {
   height: 30px;
   font-size: 30px;
   color: #078dd8; }
+
+.poi-padding-updown-small {
+  padding: 4px 0; }
+
+.poi-padding-fullwidth {
+  width: 100%; }
