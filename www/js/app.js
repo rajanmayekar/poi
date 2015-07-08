@@ -13,13 +13,15 @@ angular.module('app', ['ionic', 'uiGmapgoogle-maps'])
     }
   });
 })
+/*
   .config(function(uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
         v: '3.17',
-        libraries: 'weather,geometry,visualization'
+        libraries: 'weather,geometry,visualization,markerwithlabel'
     });
 })
+*/
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states

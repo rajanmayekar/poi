@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "lodash": "~3.10.0",
-    "angular-google-maps": "~2.1.5"
+    "angular-google-maps": "~2.1.5",
+    "easy-richmarker": "~0.0.1"
   }
 }
