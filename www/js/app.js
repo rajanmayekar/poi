@@ -1,4 +1,4 @@
-angular.module('app', ['ionic', 'uiGmapgoogle-maps'])
+angular.module('app', ['ionic', 'ionic-material', 'uiGmapgoogle-maps'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,14 +31,40 @@ angular.module('app', ['ionic', 'uiGmapgoogle-maps'])
   $stateProvider
     .state('app', {
       templateUrl: 'partials/app.html',
+      controller: 'AppCtrl',
       abstract: true
     })
-    .state('app.addpoi', {
+    .state('app.home', {
       url: '/home',
       views: {
-        'add-poi': {
+        'mainContent': {
+          templateUrl: 'partials/home.html',
+          controller: 'HomeCtrl'
+        },
+        'fabContent': {
+            template: '<button id="fab-activity" class="button button-fab button-fab-top-right button-energized-900 flap"><i class="icon ion-plus"></i></button>',
+            controller: function ($timeout) {
+              //  $timeout(function () {
+                    document.getElementById('fab-activity').classList.toggle('on');
+              //  }, 100);
+            }
+        }
+     }
+    })
+    .state('app.addpoi', {
+      url: '/addpoi',
+      views: {
+        'mainContent': {
           templateUrl: 'partials/addpoi.html',
           controller: 'AddPoiCtrl'
+        },
+        'fabContent': {
+            template: '<button id="fab-activity" class="button button-fab button-fab-top-right expanded button-energized-900 flap"><i class="icon ion-paper-airplane"></i></button>',
+            controller: function ($timeout) {
+                $timeout(function () {
+                    document.getElementById('fab-activity').classList.toggle('on');
+                }, 100);
+            }
         }
      }
     });

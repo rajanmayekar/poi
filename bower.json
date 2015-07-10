@@ -7,6 +7,10 @@
   "dependencies": {
     "lodash": "~3.10.0",
     "angular-google-maps": "~2.1.5",
-    "easy-richmarker": "~0.0.1"
+    "easy-richmarker": "~0.0.1",
+    "ionic-material": "~0.4.2",
+    "bower": "*",
+    "install": "~1.0.4",
+    "robotodraft": "~1.1.0"
   }
 }

@@ -1,0 +1,37 @@
+<ion-view view-title="MY POI">
+    <ion-content ng-class="{expanded:isExpanded}" class="home-content">
+        <div class="bar bar-subheader bar-stable static home-subheader">
+          <div class="list">
+            <div class="item">
+              <span class="home-location-icon">
+                <i class="icon ion-ios-home"></i>
+              </span>
+              <span class="home-location-name" ng-bind="location.name"></span>
+            </div>
+            <div class="item range range-positive">
+                    <i class="icon ion-ios-sunny-outline"></i>
+                    <input type="range" name="volume" min="0" max="100" value="33">
+                    <i class="icon ion-ios-sunny"></i>
+
+                    <button class="button poi-fab-button positive"><i class="icon ion-search home-seach-icon"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="list poi-list animate-fade-slide-in">
+        <div class="item item-avatar item-icon-right" ng-repeat="poi in pois">
+                    <span class="avatar button-positive"><i class="icon home-poi-icon" ng-class="getIconForType(poi.type)"></i></span>
+                    <h2 ng-bind="poi.name"></h2>
+                    <p ng-bind="poi.body"></p>
+                    <p class="home-poi-sub-info">
+                      <span> 2 Km away </span>
+                      <span class="home-seperate-line stable">|</span>
+                      <span  class="royal">
+                        {{poi.tags.join(', ')}}
+                      </span>
+                    </p>
+                    <i class="icon ion-ios-location positive muted"></i>
+
+        </div>
+      </div>
+    </ion-content>
+</ion-view>
