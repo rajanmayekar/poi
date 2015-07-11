@@ -6,7 +6,7 @@ angular.module('app')
       $scope.$parent.showHeader();
       $scope.$parent.clearFabs();
       $scope.isExpanded = false;
-    // $scope.$parent.setExpanded(true);
+      $scope.$parent.setExpanded(false);
       $scope.$parent.setHeaderFab('right');
 
       // Activate ink for controller

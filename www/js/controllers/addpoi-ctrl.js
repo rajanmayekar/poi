@@ -6,14 +6,16 @@ angular.module('app')
     $scope.$parent.setExpanded(true);
     $scope.$parent.setHeaderFab('right');
 
+    /*
     $timeout(function() {
         ionicMaterialMotion.fadeSlideIn({
             selector: '.animate-fade-slide-in .item'
         });
     }, 200);
+    */
 
     // Activate ink for controller
-    ionicMaterialInk.displayEffect();
+    // ionicMaterialInk.displayEffect();
 
     var setMapReady = function () {
         if ($scope.map.show) {

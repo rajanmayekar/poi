@@ -22,8 +22,9 @@ angular.module('app', ['ionic', 'ionic-material', 'uiGmapgoogle-maps'])
     });
 })
 */
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
 
+  $ionicConfigProvider.views.maxCache(0);
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
@@ -42,10 +43,11 @@ angular.module('app', ['ionic', 'ionic-material', 'uiGmapgoogle-maps'])
           controller: 'HomeCtrl'
         },
         'fabContent': {
-            template: '<button id="fab-activity" class="button button-fab button-fab-top-right button-energized-900 flap"><i class="icon ion-plus"></i></button>',
-            controller: function ($timeout) {
+            template: '<button id="fab-home" ng-click="$state.go(\'app.addpoi\')" class="button button-fab button-fab-bottom-right button-energized-900 flap"><i class="icon ion-plus"></i></button>',
+            controller: function ($scope, $state, $timeout) {
+              $scope.$state = $state;
               //  $timeout(function () {
-                    document.getElementById('fab-activity').classList.toggle('on');
+              document.getElementById('fab-home').classList.toggle('on');
               //  }, 100);
             }
         }
