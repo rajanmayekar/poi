@@ -69,6 +69,20 @@ angular.module('app', ['ionic', 'ionic-material', 'uiGmapgoogle-maps'])
             }
         }
      }
+    })
+    .state('app.poi', {})
+    .state('app.poi.view', {
+      url: '/poi/:id',
+      parent: 'app',
+      views: {
+        'mainContent': {
+          templateUrl: 'partials/viewpoi.html',
+          controller: 'ViewPoiCtrl'
+        },
+        'fabContent': {
+            template: ''
+        }
+     }
     });
   $urlRouterProvider.otherwise('/home');
 

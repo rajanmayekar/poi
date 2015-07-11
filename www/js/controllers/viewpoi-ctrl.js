@@ -1,10 +1,8 @@
 angular.module('app')
-  .controller('AddPoiCtrl', function ($scope, CacheFactory, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, GoogleMapFactory, MapHelperService) {
+  .controller('ViewPoiCtrl', function ($scope, $stateParams, CacheFactory, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, IconService, GoogleMapFactory, MapHelperService) {
     var googleMapFactory;
 
-    $scope.myPoi = {
-      myLocation : true
-    }
+    $scope.getIconForType = IconService.getIconForType;
 
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
@@ -42,8 +40,6 @@ angular.module('app')
         $scope.map.center = {latitude: $scope.currentLocation.geo[0], longitude: $scope.currentLocation.geo[1]};
         $scope.map.zoom = 12;
 
-        $scope.map.poiReady = true;
-        setMapReady();
       };
 
     $scope.map = {
@@ -52,29 +48,17 @@ angular.module('app')
       mapReady: false
     };
 
-    $scope.onMyLocationToggle = function () {
-      if ($scope.myPoi.myLocation) {
-        document.getElementById('pac-input').style.display = 'none';
-      } else {
-        document.getElementById('pac-input').style.display = 'block';
-      }
-    };
-
     $scope.locations = [];
     $scope.currentLocation = {};
     $scope.locationMarker = {};
 
-    if (CacheFactory.get('selectedLocation')) {
-      setCurrentLocation(CacheFactory.get('selectedLocation'));
-    } else {
-      PoiService.getUserLocations().then(function (locations) {
-        // @TODO: if no location redirect to add location first.
-        // Currently we are getting from mock service.
+    setCurrentLocation(CacheFactory.get('selectedLocation'));
 
-        // @TODO: ideally auto select location, near to current user's geo location.
-        setCurrentLocation(locations[0]);
-      });
-    }
+    PoiService.getPoiById($stateParams.id).then(function (poi) {
+      $scope.myPoi = poi;
+      $scope.map.poiReady = true;
+      setMapReady();
+    });
 
     uiGmapGoogleMapApi.then(function(maps) {
       $scope.map.mapReady = true;
@@ -86,9 +70,7 @@ angular.module('app')
             googleMapFactory = new GoogleMapFactory(inst.map);
 
             googleMapFactory.setLocationMarker($scope.currentLocation);
-            googleMapFactory.setLocationSearcher($scope.currentLocation);
 
-            $scope.onMyLocationToggle();
         });
     });
 

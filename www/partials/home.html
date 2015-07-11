@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="list poi-list animate-fade-slide-in">
-        <div class="item item-avatar item-icon-right" ng-repeat="poi in pois">
+        <a class="item item-avatar item-icon-right" ng-repeat="poi in pois" ui-sref="app.poi.view({id: poi.id})">
                     <span class="avatar button-positive"><i class="icon home-poi-icon" ng-class="getIconForType(poi.type)"></i></span>
                     <h2 ng-bind="poi.name"></h2>
                     <p ng-bind="poi.body"></p>
@@ -36,7 +36,7 @@
                     </p>
                     <i class="icon ion-ios-location positive muted"></i>
 
-        </div>
+        </a>
       </div>
     </ion-content>
 </ion-view>

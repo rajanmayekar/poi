@@ -7781,6 +7781,20 @@ a.button {
   font-style: normal; }
 
 /* END Black */
+/* default map height */
+.angular-google-map-container {
+  height: 240px; }
+
+.angular-google-map-empty {
+  height: 240px; }
+
+/* default poi mmarker icon */
+.poi-marker-icon {
+  display: block;
+  margin: 0 auto;
+  height: 30px;
+  font-size: 30px; }
+
 .poi-padding-updown-small {
   padding: 4px 0; }
 
@@ -7890,13 +7904,6 @@ p {
   padding-left: 5px;
   padding-right: 5px; }
 
-#addpoi-view .angular-google-map-container {
-  height: 240px; }
-#addpoi-view .poi-marker-icon {
-  display: block;
-  margin: 0 auto;
-  height: 30px;
-  font-size: 30px; }
 #addpoi-view .controls {
   margin-top: 5px;
   border: 1px solid transparent;
@@ -7933,3 +7940,17 @@ p {
         font-weight: 300;
         */
   display: none; }
+
+#viewpoi-view .view-poi-icon {
+  display: inline-block !important;
+  font-size: 36px !important;
+  padding-left: 14px !important;
+  padding-top: 10px !important;
+  position: relative !important; }
+#viewpoi-view .poi-distance-info {
+  border-top: none;
+  background: transparent; }
+#viewpoi-view .poi-distance-info-item {
+  padding-right: 10px; }
+  #viewpoi-view .poi-distance-info-item .icon {
+    font-size: 18px; }

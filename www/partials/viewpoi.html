@@ -1,0 +1,57 @@
+<ion-view view-title="VIEW POI" id="viewpoi-view">
+  <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-navigate" menu-toggle="right">
+      </button>
+      <button class="button button-icon button-clear ion-edit" menu-toggle="right">
+      </button>
+      <button class="button button-icon button-clear ion-android-delete" menu-toggle="right">
+      </button>
+  </ion-nav-buttons>
+  <ion-content ng-class="{expanded:isExpanded}" class="viewpoi-content">
+    <div class="list card">
+      <div class="item item-avatar">
+        <span class="avatar button-positive"><i class="icon view-poi-icon" ng-class="getIconForType(myPoi.type)"></i></span>
+        <h2 ng-bind="myPoi.name"></h2>
+        <p ng-bind="myPoi.body"></p>
+        <p><div class="poi-distance-info">
+            <span class="poi-distance-info-item">
+                <i class="icon ion-android-walk positive"></i> 20 Min
+            </span>
+            <span class="poi-distance-info-item">
+                <i class="icon ion-android-car positive"></i> 5 Min
+            </span>
+            <span class="poi-distance-info-item">
+                <i class="icon ion-android-bus positive"></i> 10 Min
+            </span>
+        </div></p>
+      </div>
+
+    </div>
+    <div class="im-wrapper">
+      <div ng-if="map.show">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true" options="map.options">
+        <!--
+        <ui-gmap-marker
+          coords="locationMarker"
+          title="locationMarker.title"
+          icon="locationMarker.icon"
+          events="locationMarker.events"
+          idkey="locationMarker.id" ng-cloak>
+            <ui-gmap-window coords="m.location" ng-cloak>
+                <div ng-cloak>
+                    <p>This is an info window at {{ m.latitude | number:4 }}, {{ m.longitude | number:4 }}!</p>
+                    <br>
+                </div>
+            </ui-gmap-window>
+        </ui-gmap-marker>
+        -->
+        </ui-gmap-google-map>
+      </div>
+      <div ng-show="!map.show">
+        <div class="angular-google-map-empty"></div>
+      </div>
+      <div class="poi-padding-updown-small">
+      </div>
+      </div
+  </ion-content>
+</ion-view>

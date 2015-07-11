@@ -1,0 +1,22 @@
+#viewpoi-view {
+  .view-poi-icon {
+    display: inline-block !important;
+    font-size: 36px !important;
+    padding-left: 14px !important;
+    padding-top: 10px !important;
+    position: relative !important;
+  }
+
+  .poi-distance-info {
+    border-top: none;
+    background: transparent;
+  }
+
+  .poi-distance-info-item {
+    padding-right: 10px;
+
+    .icon {
+      font-size: 18px;
+    }
+  }
+}
