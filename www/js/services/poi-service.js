@@ -19,7 +19,7 @@ angular.module('app')
             id: 'dsada32-32sd32-3213dasd',
             name: 'My Home - Airoli',
             icon: 'home',
-            geo: [19.1196773, 72.9050809]
+            geo: [19.1460685, 72.9918097]
           },
           {
             id: 'dsada32-32sd32-3213dasd',

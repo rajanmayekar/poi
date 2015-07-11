@@ -1,62 +1,61 @@
-.home-location-icon {
-  padding-right: 10px;
-}
-
-.home-subheader {
-  top: 44px;
-  height: 105px;
-
-  .list {
-    .item {
-      padding-bottom: 5px;
-      min-height: 40px;
-    }
-  }
-
+#home-view {
   .home-location-icon {
-    .icon {
-      font-size: 24px;
+    padding-right: 10px;
+  }
+
+  .home-subheader {
+    top: 44px;
+    height: 105px;
+
+    .list {
+      .item {
+        padding-bottom: 5px;
+        min-height: 40px;
+      }
+    }
+
+    .home-location-icon {
+      .icon {
+        font-size: 24px;
+      }
+    }
+
+    .home-seach-icon {
+      font-size: 40px;
+    }
+
+  .button.poi-fab-button {
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      width: 40px;
+      height: 40px;
+      max-height: initial;
+      max-width: initial;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      -webkit-transition: 0.3s fade-in-out;
+      transition: 0.3s fade-in-out;
+      -webkit-transition-property: -webkit-transform, box-shadow;
+      transition-property: transform, box-shadow;
     }
   }
 
-  .home-seach-icon {
-    font-size: 40px;
+  .home-poi-icon {
+    display: inline-block !important;
+    font-size: 36px !important;
+    padding-left: 27px !important;
+    padding-top: 10px !important;
+    position: relative !important;
   }
 
-.button.poi-fab-button {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    width: 40px;
-    height: 40px;
-    max-height: initial;
-    max-width: initial;
-    border-radius: 50%;
-    overflow: hidden;
-    padding: 0;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-transition: 0.3s fade-in-out;
-    transition: 0.3s fade-in-out;
-    -webkit-transition-property: -webkit-transform, box-shadow;
-    transition-property: transform, box-shadow;
+  .list .item p.home-poi-sub-info {
+    font-size: 12px;
   }
-}
 
-.home-poi-icon {
-  display: inline-block !important;
-  font-size: 36px !important;
-  padding-left: 27px !important;
-  padding-top: 10px !important;
-  position: relative !important;
-}
-
-.list .item p.home-poi-sub-info {
-  font-size: 12px;
-}
-
-.home-seperate-line {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.has-header.home-content {
-  top: 149px;
+  .home-seperate-line {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }

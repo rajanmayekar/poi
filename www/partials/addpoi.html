@@ -1,4 +1,4 @@
-<ion-view view-title="ADD MY POI">
+<ion-view view-title="ADD MY POI" id="addpoi-view">
   <ion-content ng-class="{expanded:isExpanded}" class="addpoi-content">
     <div class="im-wrapper">
     <div class="list  ">
@@ -11,18 +11,21 @@
       </label>
       <label class="item item-input item-floating-label">
           <span class="input-label">Tags (Comma seperated)</span>
-          <input type="text" placeholder="Add Tags">
+          <input type="text" placeholder="Add Tags">P
       </label>
       <div class="item item-checkbox">
           <label class="checkbox">
-              <input type="checkbox" value="on">
+              <input type="checkbox" name="myLocation" ng-model="myPoi.myLocation" ng-change="onMyLocationToggle()">
           </label>
           Take My Current Location
       </div>
-      <label class="item item-input item-floating-label">
-          <span class="input-label">Search by name</span>
-          <input type="text" placeholder="Search by name">
-      </label>
+      <div class="item hide">
+         <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+         <div id="type-selector" class="controls">
+           <input type="radio" name="type" id="changetype-address" checked="checked">
+           <label for="changetype-address">Addresses</label>
+         </div>
+      </div>
     </div>
     <div ng-show="map.show">
     <ui-gmap-google-map center='map.center' zoom='map.zoom' pan="true" options="map.options">

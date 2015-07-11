@@ -1,5 +1,11 @@
 angular.module('app')
-  .controller('AddPoiCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, IconService, MapHelperService, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+  .controller('AddPoiCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, GoogleMapFactory, IconService, MapHelperService, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+    var googleMapFactory;
+
+    $scope.myPoi = {
+      myLocation : true
+    }
+
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
     $scope.isExpanded = false;
@@ -23,31 +29,26 @@ angular.module('app')
         }
 
         if ($scope.map.poiReady && $scope.map.mapReady) {
-          console.log($scope.locationMarker);
           $scope.map.show = true;
         }
       },
 
       setMapStyle = function () {
         $scope.map.options = {styles : MapHelperService.getMapStyleOption()};
-      },
-
-      setLocationMarker = function (map) {
-        var icon = IconService.getIconForName($scope.currentLocation.icon);
-
-        marker = new RichMarker({
-            position: new google.maps.LatLng($scope.currentLocation.geo[0], $scope.currentLocation.geo[1]),
-            map: map,
-            draggable: false,
-            flat: true,
-            content: '<span class="poi-marker-icon icon ' + icon + '" title="' + $scope.currentLocation.name + '" aria-hidden="true"></span>'
-            });
-        };
+      };
 
     $scope.map = {
       show: false,
       poiReady: false,
       mapReady: false
+    };
+
+    $scope.onMyLocationToggle = function () {
+      if ($scope.myPoi.myLocation) {
+        document.getElementById('pac-input').style.display = 'none';
+      } else {
+        document.getElementById('pac-input').style.display = 'block';
+      }
     };
 
     $scope.locations = [];
@@ -77,8 +78,12 @@ angular.module('app')
 
     uiGmapIsReady.promise(1).then(function(instances) {
         instances.forEach(function(inst) {
-            var map = inst.map;
-            setLocationMarker(map);
+            googleMapFactory = new GoogleMapFactory(inst.map);
+
+            googleMapFactory.setLocationMarker($scope.currentLocation);
+            googleMapFactory.setLocationSearcher($scope.currentLocation);
+
+            $scope.onMyLocationToggle();
         });
     });
 
