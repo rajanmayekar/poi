@@ -1,9 +1,9 @@
 angular.module('app')
-  .controller('AddPoiCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, MapHelperService, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+  .controller('AddPoiCtrl', function ($scope, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, IconService, MapHelperService, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
-    $scope.isExpanded = true;
-    $scope.$parent.setExpanded(true);
+    $scope.isExpanded = false;
+    $scope.$parent.setExpanded(false);
     $scope.$parent.setHeaderFab('right');
 
     /*
@@ -33,12 +33,14 @@ angular.module('app')
       },
 
       setLocationMarker = function (map) {
+        var icon = IconService.getIconForName($scope.currentLocation.icon);
+
         marker = new RichMarker({
-            position: new google.maps.LatLng($scope.locationMarker.latitude, $scope.locationMarker.longitude),
+            position: new google.maps.LatLng($scope.currentLocation.geo[0], $scope.currentLocation.geo[1]),
             map: map,
-            draggable: true,
+            draggable: false,
             flat: true,
-            content: '<span class="icon ion-home poi-marker-icon" title="home" aria-hidden="true"></span>'
+            content: '<span class="poi-marker-icon icon ' + icon + '" title="' + $scope.currentLocation.name + '" aria-hidden="true"></span>'
             });
         };
 
@@ -60,12 +62,6 @@ angular.module('app')
 
       // @TODO: ideally auto select location, near to current user's geo location.
       $scope.currentLocation = locations[0];
-
-      // Set marker
-      $scope.locationMarker.latitude = $scope.currentLocation.geo[0];
-      $scope.locationMarker.longitude = $scope.currentLocation.geo[1];
-      $scope.locationMarker.title = $scope.currentLocation.name;
-      $scope.locationMarker.id = $scope.currentLocation.id;
 
       $scope.map.center = {latitude: $scope.currentLocation.geo[0], longitude: $scope.currentLocation.geo[1]};
       $scope.map.zoom = 12;

@@ -1,18 +1,27 @@
-<<ion-view view-title="ADD MY POI">
-    <ion-content ng-class="{expanded:isExpanded}" class="home-content">
-
-    <div class="card">
-      <label class="item item-input">
-        <span class="input-label">Location</span>
-        <input type="text" placeholder="Select Location" ng-model="currentLocation.name">
+<ion-view view-title="ADD MY POI">
+  <ion-content ng-class="{expanded:isExpanded}" class="addpoi-content">
+    <div class="im-wrapper">
+    <div class="list  ">
+      <div class="item">
+        <span ng-bind="currentLocation.name"></span>
+      </div>
+      <label class="item item-input item-floating-label">
+          <span class="input-label">POI Name</span>
+          <input type="text" placeholder="POI Name">
       </label>
-      <label class="item item-input">
-        <span class="input-label">Seach POI</span>
-        <input type="text" placeholder="Current Location">
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Tags (Comma seperated)</span>
+          <input type="text" placeholder="Add Tags">
       </label>
-      <label class="item item-input">
-        <span class="input-label">Tag</span>
-        <input type="text" placeholder="Hotel">
+      <div class="item item-checkbox">
+          <label class="checkbox">
+              <input type="checkbox" value="on">
+          </label>
+          Take My Current Location
+      </div>
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Search by name</span>
+          <input type="text" placeholder="Search by name">
       </label>
     </div>
     <div ng-show="map.show">
@@ -34,12 +43,9 @@
       -->
     </ui-gmap-google-map>
     <div class="poi-padding-updown-small">
-    <button class="button button-positive poi-padding-fullwidth">
-      ADD THIS AS A POI
+    <button class="button button-block button-calm ink activated" data-ink-color="#9DEAFF" data-ink-opacity="1">
+        ADD THIS AS A POI
     </button>
-    <div>
-
-  </div>
-
+    </div>
   </ion-content>
 </ion-view>

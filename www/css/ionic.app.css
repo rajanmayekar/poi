@@ -7782,7 +7782,7 @@ a.button {
 
 /* END Black */
 .angular-google-map-container {
-  height: 320px; }
+  height: 200px; }
 
 .poi-marker-icon {
   display: block;
@@ -7865,6 +7865,7 @@ p {
   padding-right: 10px; }
 
 .home-subheader {
+  top: 44px;
   height: 105px; }
   .home-subheader .list .item {
     padding-bottom: 5px;
@@ -7902,3 +7903,6 @@ p {
 .home-seperate-line {
   padding-left: 5px;
   padding-right: 5px; }
+
+.has-header.home-content {
+  top: 149px; }

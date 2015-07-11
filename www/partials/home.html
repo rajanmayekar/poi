@@ -1,4 +1,8 @@
 <ion-view view-title="MY POI">
+  <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-android-more-vertical" menu-toggle="right">
+      </button>
+  </ion-nav-buttons>
     <ion-content ng-class="{expanded:isExpanded}" class="home-content">
         <div class="bar bar-subheader bar-stable static home-subheader">
           <div class="list">
@@ -7,13 +11,14 @@
                 <i class="icon ion-ios-home"></i>
               </span>
               <span class="home-location-name" ng-bind="location.name"></span>
+              <!--
+              <button class="button poi-fab-button positive pull-right"><i class="icon ion-search home-seach-icon"></i></button>
+            -->
             </div>
             <div class="item range range-positive">
                     <i class="icon ion-ios-sunny-outline"></i>
                     <input type="range" name="volume" min="0" max="100" value="33">
                     <i class="icon ion-ios-sunny"></i>
-
-                    <button class="button poi-fab-button positive"><i class="icon ion-search home-seach-icon"></i></button>
             </div>
           </div>
         </div>
