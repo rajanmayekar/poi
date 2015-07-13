@@ -17,7 +17,7 @@ angular.module('app')
         });
       };
 
-      GoogleMapFactory.prototype.setLocationSearcher = function (location) {
+      GoogleMapFactory.prototype.setLocationSearcher = function (location, locationPoints) {
         var input = /** @type {HTMLInputElement} */(
             document.getElementById('pac-input'));
 
@@ -73,6 +73,9 @@ angular.module('app')
 
           infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
           infowindow.open(map, marker);
+
+          locationPoints.lat = place.geometry.location.lat();
+          locationPoints.lng = place.geometry.location.lng();
         });
 
         /*

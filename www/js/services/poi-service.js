@@ -67,4 +67,9 @@ angular.module('app')
           return respond(pois[0], 1000);
         // @TODO return reject promise here.
       };
+
+      this.addPoi = function (poi) {
+          pois.push(poi);
+          return respond(poi, 1000);
+      }
   });

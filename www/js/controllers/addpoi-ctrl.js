@@ -1,9 +1,12 @@
 angular.module('app')
-  .controller('AddPoiCtrl', function ($scope, CacheFactory, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, GoogleMapFactory, MapHelperService) {
+  .controller('AddPoiCtrl', function ($scope, $state, CacheFactory, uiGmapGoogleMapApi, uiGmapIsReady, PoiService, GoogleMapFactory, MapHelperService) {
     var googleMapFactory;
 
     $scope.myPoi = {
-      myLocation : true
+      name: '',
+      tags: '',
+      myLocation : true,
+      locationPoints : {}
     }
 
     $scope.$parent.showHeader();
@@ -60,6 +63,25 @@ angular.module('app')
       }
     };
 
+    $scope.onSave = function () {
+      // @TODO add validation
+
+      var poi = {
+        id: 'dsada32-32sd32-3213dasd',
+        name: $scope.myPoi.name,
+        body: "@todo Twice I've had to change my code to accommodate the weird lat/lng property",  // @todo add field
+        tags: $scope.myPoi.tags ? $scope.myPoi.tags.split(',') : null,
+        type: 'shopping', // @todo add field
+        geo: [$scope.myPoi.locationPoints.lat, $scope.myPoi.locationPoints.lng]
+      }
+
+      $scope.$parent.showLoading();
+      PoiService.addPoi(poi).then(function () {
+        $scope.$parent.hideLoading();
+        $state.go('app.home');
+      });
+    };
+
     $scope.locations = [];
     $scope.currentLocation = {};
     $scope.locationMarker = {};
@@ -86,7 +108,7 @@ angular.module('app')
             googleMapFactory = new GoogleMapFactory(inst.map);
 
             googleMapFactory.setLocationMarker($scope.currentLocation);
-            googleMapFactory.setLocationSearcher($scope.currentLocation);
+            googleMapFactory.setLocationSearcher($scope.currentLocation, $scope.myPoi.locationPoints);
 
             $scope.onMyLocationToggle();
         });

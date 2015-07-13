@@ -4,7 +4,7 @@ angular.module('app')
 
       return {
         put: function (key, value) {
-          appCache.remove(key);
+          // appCache.remove(key);
           appCache.put(key, value);
         },
 

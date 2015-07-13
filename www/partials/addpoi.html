@@ -7,11 +7,11 @@
       </div>
       <label class="item item-input item-floating-label">
           <span class="input-label">POI Name</span>
-          <input type="text" placeholder="POI Name">
+          <input type="text" placeholder="POI Name" ng-model="myPoi.name">
       </label>
       <label class="item item-input item-floating-label">
           <span class="input-label">Tags (Comma seperated)</span>
-          <input type="text" placeholder="Add Tags">P
+          <input type="text" placeholder="Add Tags" ng-model="myPoi.tags">
       </label>
       <div class="item item-checkbox">
           <label class="checkbox">
@@ -51,7 +51,7 @@
     </div>
 
     <div class="poi-padding-updown-small">
-    <button class="button button-block button-calm ink activated" data-ink-color="#9DEAFF" data-ink-opacity="1">
+    <button class="button button-block button-calm ink activated" data-ink-color="#9DEAFF" data-ink-opacity="1" ng-click="onSave()">
         ADD THIS AS A POI
     </button>
     </div>
