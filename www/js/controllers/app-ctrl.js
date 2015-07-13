@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $timeout) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $ionicLoading, $timeout) {
     // Form data for the login modal
     $scope.loginData = {};
     $scope.isExpanded = false;
@@ -80,5 +80,15 @@ angular.module('app')
         if (fabs.length && fabs.length > 1) {
             fabs[0].remove();
         }
+    };
+
+    $scope.showLoading = function() {
+        $ionicLoading.show({
+          template: '<ion-spinner></ion-spinner>'
+        });
+    };
+
+    $scope.hideLoading = function(){
+        $ionicLoading.hide();
     };
   });

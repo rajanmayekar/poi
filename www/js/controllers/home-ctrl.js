@@ -1,5 +1,24 @@
 angular.module('app')
   .controller('HomeCtrl', function ($scope, CacheFactory, PoiService, IconService, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+      var pageReady = {
+            getPoiPerLocations: false,
+            getUserLocations: false,
+          },
+
+          doneLoading = function () {
+            if (!pageReady.getPoiPerLocations ||
+                !pageReady.getUserLocations) {
+              return;
+            }
+            $scope.$parent.hideLoading();
+
+            $timeout(function() {
+              ionicMaterialMotion.fadeSlideIn({
+                  selector: '.animate-fade-slide-in .item'
+              });
+            }, 100);
+          };
+
       $scope.pois = [];
       $scope.getIconForType = IconService.getIconForType;
 
@@ -9,17 +28,16 @@ angular.module('app')
       $scope.$parent.setExpanded(false);
       $scope.$parent.setHeaderFab('right');
 
+      $scope.$parent.showLoading();
+
       // Activate ink for controller
       ionicMaterialInk.displayEffect();
 
       PoiService.getPoiPerLocations().then(function (pois) {
           $scope.pois = pois;
 
-          $timeout(function() {
-            ionicMaterialMotion.fadeSlideIn({
-                selector: '.animate-fade-slide-in .item'
-            });
-          }, 100);
+          pageReady.getPoiPerLocations = true;
+          doneLoading();
       });
 
       PoiService.getUserLocations().then(function (locations) {
@@ -29,5 +47,8 @@ angular.module('app')
 
         // @TODO: create own factory service and use that with $cacheFactory
         CacheFactory.put('selectedLocation', $scope.location);
+
+        pageReady.getUserLocations = true;
+        doneLoading();
       });
   });
