@@ -35,6 +35,24 @@ angular.module('app', ['ionic', 'ionic-material', 'uiGmapgoogle-maps'])
       controller: 'AppCtrl',
       abstract: true
     })
+    .state('app.login', {
+      url: '/login',
+      views: {
+        'mainContent': {
+          templateUrl: 'partials/login.html',
+          controller: 'LoginController'
+        },
+        'fabContent': {
+            template: '<button id="fab-login" ng-click="$state.go(\'app.addpoi\')" class="button button-fab button-fab-bottom-right button-energized-900 flap"><i class="icon ion-plus"></i></button>',
+            controller: function ($scope, $state, $timeout) {
+              $scope.$state = $state;
+              //  $timeout(function () {
+              document.getElementById('fab-login').classList.toggle('on');
+              //  }, 100);
+            }
+        }
+    }
+    })
     .state('app.home', {
       url: '/home',
       views: {
@@ -43,7 +61,7 @@ angular.module('app', ['ionic', 'ionic-material', 'uiGmapgoogle-maps'])
           controller: 'HomeCtrl'
         },
         'fabContent': {
-            template: '<button id="fab-home" ng-click="$state.go(\'app.addpoi\')" class="button button-fab button-fab-bottom-right button-energized-900 flap"><i class="icon ion-plus"></i></button>',
+            template: '<button id="fab-home" ng-click="$state.go(\'app.addpoisss\')" class="button button-fab button-fab-bottom-right button-energized-900 flap"><i class="icon ion-plus"></i></button>',
             controller: function ($scope, $state, $timeout) {
               $scope.$state = $state;
               //  $timeout(function () {
@@ -84,7 +102,7 @@ angular.module('app', ['ionic', 'ionic-material', 'uiGmapgoogle-maps'])
         }
      }
     });
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/login');
 
 
 });
